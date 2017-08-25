@@ -47,8 +47,21 @@ class apartmentDaoTest extends Specification {
       rows[0].estrato == apartmentRow.estrato
       rows[0].address == apartmentRow.address
       rows[0].description == apartmentRow.description
-      rows[0].updaded_date == apartmentRow.updateDate
+      rows[0].updated_date == apartmentRow.updateDate
       rows[0].url == apartmentRow.url
+   }
+
+   def "select all the aparmentRows from the database"(){
+      given:
+      apartmentDao.insertApartmentRow(apartmentRow)
+      apartmentDao.insertApartmentRow(apartmentRow1)
+      when:
+      List result =apartmentDao.selectAllApartments()
+      then:
+      result.size() == 2
+      result.contains(apartmentRow)
+      result.contains(apartmentRow1)
+
    }
 
 }
