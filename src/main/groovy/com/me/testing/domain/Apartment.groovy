@@ -1,5 +1,8 @@
 package com.me.testing.domain
 
+import groovy.transform.EqualsAndHashCode
+
+@EqualsAndHashCode
 class Apartment {
 
     String propertyType
