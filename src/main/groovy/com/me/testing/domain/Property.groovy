@@ -3,7 +3,7 @@ package com.me.testing.domain
 import groovy.transform.EqualsAndHashCode
 
 @EqualsAndHashCode
-class Apartment {
+class Property {
 
     String propertyType
     BigDecimal price

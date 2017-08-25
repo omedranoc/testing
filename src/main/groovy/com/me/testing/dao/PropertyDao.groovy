@@ -1,32 +1,32 @@
 package com.me.testing.dao
 
-import com.me.testing.domain.Apartment
+import com.me.testing.domain.Property
 import groovy.sql.Sql
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 
 @Component
-class ApartmentDao {
+class PropertyDao {
     Sql sql
 
     @Autowired
-    ApartmentDao(Sql sql){
+    PropertyDao(Sql sql){
         this.sql = sql
 
     }
 
-    def insertApartmentRow(Apartment apartment){
-        sql.execute("insert into finca_raiz (property_type, price, private_area, built_area, estrato, address, description" +
+    def insertApartmentRow(Property apartment){
+        sql.execute("insert into property (property_type, price, private_area, built_area, estrato, address, description" +
                 ", updated_date, url) values (?,?,?,?,?,?,?,?,?)", apartment.propertyType, apartment.price, apartment.privateArea, apartment.builtArea
                 , apartment.estrato, apartment.address, apartment.description, apartment.updateDate, apartment.url)
 
     }
 
     def selectAllApartments() {
-        List<Apartment> apartments = []
-        sql.eachRow("select * from finca_raiz") {
+        List<Property> apartments = []
+        sql.eachRow("select * from property") {
             row ->
-                apartments << new Apartment(propertyType: row.property_type, price: row.price, privateArea: row.private_area,
+                apartments << new Property(propertyType: row.property_type, price: row.price, privateArea: row.private_area,
                         builtArea: row.built_area, estrato: row.estrato, address: row.address, description: row.description,
                         updateDate: row.updated_date, url: row.url)
         }

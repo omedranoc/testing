@@ -1,6 +1,6 @@
 SET MODE = MySQL;
 
-create table finca_raiz (
+create table property (
   finca_raiz_id bigint not null auto_increment
 , property_type varchar(17)
 , price decimal(20, 2)
