@@ -9,7 +9,7 @@ create table finca_raiz (
 , estrato int
 , address VARCHAR (30)
 , description VARCHAR (40000)
-, updaded_date date
+, updated_date date
 , url VARCHAR (500)
 , PRIMARY KEY (finca_raiz_id)
 );
