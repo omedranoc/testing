@@ -18,7 +18,7 @@ class PropertyController {
         this.propertyService = propertyService
 
     }
-    @RequestMapping(value='/logout', method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value='/propertiesbyestrato/{estrato}', method = RequestMethod.GET, produces = "application/json")
     def getPropertiesByEstrato(@RequestParam int estrato){
         List<Property> properties = propertyService.getPropertiesByEstrato(estrato)
         ResponseEntity responseEntity = new ResponseEntity(properties, HttpStatus.OK)

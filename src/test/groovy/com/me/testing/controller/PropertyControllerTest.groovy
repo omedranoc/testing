@@ -28,5 +28,4 @@ class PropertyControllerTest extends Specification {
         responseEntity.body == [property1, property2]
 
     }
-
 }
