@@ -26,9 +26,11 @@ dependencies {
 	compile 'org.codehaus.groovy:groovy-all'
 	compile "org.springframework:spring-jdbc:3.2.6.RELEASE"
 	compile "org.springframework:spring-web"
+	compile "org.springframework.boot:spring-boot-starter-tomcat"
+	compile 'com.h2database:h2:1.3.156'
 	testCompile 'org.springframework.boot:spring-boot-starter-test'
-	testCompile 'com.h2database:h2:1.4.187'
 	testCompile 'org.spockframework:spock-core:1.0-groovy-2.4'
 	testCompile 'cglib:cglib-nodep:3.1'
+	testCompile 'org.mockito:mockito-core:1.10.19'
 
 }
