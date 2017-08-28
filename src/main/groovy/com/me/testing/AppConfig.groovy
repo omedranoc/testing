@@ -11,7 +11,6 @@ import javax.sql.DataSource
 @Configuration
 class AppConfig {
 
-
     @Bean
     public Sql Sql(DataSource dataSource) {
         return new Sql(dataSource);
