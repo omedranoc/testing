@@ -7,7 +7,7 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType
 import spock.lang.Specification
 import groovy.sql.Sql
 
-class apartmentDaoTest extends Specification {
+class PropertyDaoTest extends Specification {
 
    static EmbeddedDatabase embeddedDatabase
    Sql sql = new Sql(embeddedDatabase)
