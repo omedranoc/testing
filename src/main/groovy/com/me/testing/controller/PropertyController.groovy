@@ -20,9 +20,17 @@ class PropertyController {
     }
     @RequestMapping(value='/propertiesbyestrato/{estrato}', method = RequestMethod.GET, produces = "application/json")
     def getPropertiesByEstrato(@RequestParam int estrato){
-        List<Property> properties = propertyService.getPropertiesByEstrato(estrato)
-        ResponseEntity responseEntity = new ResponseEntity(properties, HttpStatus.OK)
-        responseEntity
+        try {
+            List<Property> properties = propertyService.getPropertiesByEstrato(estrato)?:[]
+            if (properties.size() == 0) {
+                return new ResponseEntity(properties, HttpStatus.NO_CONTENT)
+            } else {
+                return new ResponseEntity(properties, HttpStatus.OK)
+            }
+        } catch (Exception e){
+            e.printStackTrace()
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR)
+        }
     }
 
 }

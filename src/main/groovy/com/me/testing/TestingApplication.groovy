@@ -11,6 +11,7 @@ class TestingApplication {
 
 	static void main(String[] args) {
 		SpringApplication.run TestingApplication, args
-		//app that was develop for testing purposes  that  brings up all the apartment data  collected in  the  https://www.fincaraiz.com.co/ website and proccess it
+		//app that was develop for testing purposes  that  brings up all the apartment data  collected in  the  https://www.fincaraiz.com.co/ website and proccess it,
+		// some of  the variables are in spanish since its semantic meaning does not correspond directly with  some words in English
 	}
 }
