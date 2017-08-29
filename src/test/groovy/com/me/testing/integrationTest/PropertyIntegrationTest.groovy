@@ -3,6 +3,7 @@ package com.me.testing.integrationTest
 import com.me.testing.dao.PropertyDao
 import com.me.testing.domain.Property
 import com.me.testing.service.PropertyService
+import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -16,7 +17,7 @@ import static org.mockito.BDDMockito.given
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment=SpringBootTest.WebEnvironment.RANDOM_PORT)
 class PropertyIntegrationTest {
-
+    final String  RESPONSE ="""{"timestamp":1503971258904,"status":400,"error":"Bad Request","exception":"org.springframework.web.bind.MissingServletRequestParameterException","message":"Required int parameter 'estrato' is not present","path":"/propertiesbyestrato/1"}"""
     @Autowired private TestRestTemplate testRestTemplate
     @SpyBean private PropertyDao propertyDao
     @SpyBean private PropertyService propertyService
@@ -25,19 +26,18 @@ class PropertyIntegrationTest {
     @Before
     public void setup(){
 
-        Property property1 = new Property()
-        Property property2 = new Property()
-        property1.estrato =1
-        property2.estrato =1
-        property1.propertyType = "casa"
-        property2.propertyType = "apartment"
-        given(this.propertyService.getPropertiesByEstrato(1)).willReturn([property1,property2]);
-        given(this.propertyDao.selectAllApartments()).willReturn([property1,property2]);
+
     }
     @Test
-    public void test(){
-        def result =  this.testRestTemplate.getForObject("/propertiesbyestrato/1", String.class)
-        println(result.toString())
+    public  void shouldReturnBadRequestIfNotParameterIsPassed(){
+
+        Property property1 = new Property(estrato: 1, propertyType: "casa")
+        Property property2 = new Property(estrato: 1, propertyType: "apartment")
+        List properties = [property1, property2]
+        given(this.propertyService.getPropertiesByEstrato(1)).willReturn(properties);
+        def result =  this.testRestTemplate.getForObject("/propertiesbyestrato", String.class, ["estrato":null])
+        println(result)
+        Assert.assertEquals(RESPONSE, result);
 
     }
 
