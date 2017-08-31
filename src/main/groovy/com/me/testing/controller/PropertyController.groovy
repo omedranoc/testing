@@ -18,7 +18,7 @@ class PropertyController {
         this.propertyService = propertyService
 
     }
-    @RequestMapping(value='/propertiesbyestrato/', method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value='/propertiesbyestrato', method = RequestMethod.GET, produces = "application/json")
     def getPropertiesByEstrato(@RequestParam int estrato){
         try {
             List<Property> properties = propertyService.getPropertiesByEstrato(estrato)?:[]

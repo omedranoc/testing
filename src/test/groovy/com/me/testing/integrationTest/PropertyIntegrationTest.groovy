@@ -17,7 +17,7 @@ import static org.mockito.BDDMockito.given
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment=SpringBootTest.WebEnvironment.RANDOM_PORT)
 class PropertyIntegrationTest {
-    final String  RESPONSE ="""{ "properties": [{"estrato": "1", "propertyType": "casa"},{"estrato": "1", "propertyType": "apartment"}]}"""
+    final String  RESPONSE ="""[{"propertyType":"casa","privateArea":0,"builtArea":0,"estrato":1},{"propertyType":"apartment","privateArea":0,"builtArea":0,"estrato":1}]"""
     @Autowired private TestRestTemplate testRestTemplate
     @SpyBean private PropertyDao propertyDao
     @SpyBean private PropertyService propertyService
@@ -35,8 +35,7 @@ class PropertyIntegrationTest {
         Property property2 = new Property(estrato: 1, propertyType: "apartment")
         List properties = [property1, property2]
         given(this.propertyService.getPropertiesByEstrato(1)).willReturn(properties);
-        def result =  this.testRestTemplate.getForObject("/propertiesbyestrato", String.class, ["estrato":null])
-        println(result)
+        def result =  this.testRestTemplate.getForObject("/propertiesbyestrato?estrato={estrato}", String.class, 1)
         Assert.assertEquals(RESPONSE, result);
 
     }
