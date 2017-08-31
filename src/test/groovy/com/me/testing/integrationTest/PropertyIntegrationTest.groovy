@@ -17,7 +17,7 @@ import static org.mockito.BDDMockito.given
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment=SpringBootTest.WebEnvironment.RANDOM_PORT)
 class PropertyIntegrationTest {
-    final String  RESPONSE ="""{"timestamp":1503971258904,"status":400,"error":"Bad Request","exception":"org.springframework.web.bind.MissingServletRequestParameterException","message":"Required int parameter 'estrato' is not present","path":"/propertiesbyestrato/1"}"""
+    final String  RESPONSE ="""{ "properties": [{"estrato": "1", "propertyType": "casa"},{"estrato": "1", "propertyType": "apartment"}]}"""
     @Autowired private TestRestTemplate testRestTemplate
     @SpyBean private PropertyDao propertyDao
     @SpyBean private PropertyService propertyService

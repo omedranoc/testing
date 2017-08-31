@@ -1,4 +1,1 @@
-{
-  "greeting": "hola"
-
-}
+{ "properties": [{"estrato": "1", "propertyType": "casa"},{"estrato": "1", "propertyType": "apartment"}]}
