@@ -22,7 +22,7 @@ class PropertyServiceTest extends Specification {
     def "get all the properties filtered by their estrato"() {
         given:
         int estrato = 4
-        propertyDao.selectAllApartments() >> [apartmentRow, houseRow, houseRow1]
+        propertyDao.selectAllProperties() >> [apartmentRow, houseRow, houseRow1]
         when:
         List<Property> properties = propertyService.getPropertiesByEstrato(estrato)
         then:

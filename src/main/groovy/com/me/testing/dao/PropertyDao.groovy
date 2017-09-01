@@ -15,14 +15,14 @@ class PropertyDao {
 
     }
 
-    def insertApartmentRow(Property apartment){
+    def insertPropertyRow(Property apartment){
         sql.execute("insert into property (property_type, price, private_area, built_area, estrato, address, description" +
                 ", updated_date, url) values (?,?,?,?,?,?,?,?,?)", apartment.propertyType, apartment.price, apartment.privateArea, apartment.builtArea
                 , apartment.estrato, apartment.address, apartment.description, apartment.updateDate, apartment.url)
 
     }
 
-    def selectAllApartments() {
+    def selectAllProperties() {
         List<Property> apartments = []
         sql.eachRow("select * from property") {
             row ->

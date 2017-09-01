@@ -15,7 +15,7 @@ class PropertyService {
     }
 
     List<Property> getPropertiesByEstrato(int estrato){
-       propertyDao.selectAllApartments().findAll({property -> property.estrato == estrato})
+       propertyDao.selectAllProperties().findAll({ property -> property.estrato == estrato})
     }
 
 
